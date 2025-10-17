@@ -36,7 +36,7 @@ def transaction_list(request):
         'statuses': statuses,
         'types': types,
         'categories': categories,
-        'filters': request.GET  # We pass the raw request.GET data
+        'filters': request.GET  
     }
     return render(request, 'core/transaction_list.html', context)
 
