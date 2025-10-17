@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение удаления</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2em;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2em;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Вы уверены?</h1>
+        <p>Вы действительно хотите удалить транзакцию от <strong>{{ transaction.created_date|date:"d.m.Y" }}</strong> на
+            сумму <strong>{{ transaction.amount }} руб.</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Да, удалить</button>
+            <a href="{% url 'transaction_list' %}" class="btn-secondary">Отмена</a>
+        </form>
+    </div>
+
+</body>
+
+</html>
